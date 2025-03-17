@@ -1,7 +1,23 @@
-## Robot Package Template
+# alex_robot
 
-This is a GitHub template. You can make your own copy by clicking the green "Use this template" button.
+## how to run code
 
-It is recommended that you keep the repo/package name the same, but if you do change it, ensure you do a "Find all" using your IDE (or the built-in GitHub IDE by hitting the `.` key) and rename all instances of `alex_bot` to whatever your project's name is.
+before you begin, make a dev_ws directory in home, in dev_ws create src, clone the repo there. install all of the packages in requirements.txt. if some fail, it is ok.
 
-Note that each directory currently has at least one file in it to ensure that git tracks the files (and, consequently, that a fresh clone has direcctories present for CMake to find). These example files can be removed if required (and the directories can be removed if `CMakeLists.txt` is adjusted accordingly).
+### simulate movement in gazebo and rviz2
+
+get to src directory and in one command window run
+
+`colcon build --symlink-install`
+`source install/setup.bash` (instead of this you can run
+>`echo "source /path/to/your/ros2_ws/install/setup.bash" >> ~/.bashrc`
+>`source ~/.bashrc`
+
+once)
+`ros2 launch alex_bot launch_sim.launch.py`
+
+in another run
+
+`rviz2 -d ABSPATH`
+
+next, i will make it so that mapping beggins automatically. until then, we need the following
