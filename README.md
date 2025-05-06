@@ -20,4 +20,8 @@ in another run
 
 `rviz2 -d ABSPATH`
 
+for arduino launch go to downloads
+
+`./arduino-ide_nightly-20250311_Linux_64bit.AppImage --no-sandbox`
+
 next, i will make it so that mapping beggins automatically. until then, we need the following
