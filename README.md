@@ -24,5 +24,12 @@ for arduino launch go to downloads
 
 `./arduino-ide_nightly-20250311_Linux_64bit.AppImage --no-sandbox`
 
+-----
+`ros2 run micro_ros_agent micro_ros_agent udp4 --port 8888`
+run this before running esp.
 
-next, i will make it so that mapping beggins automatically. until then, we need the following
+    lsof | grep /dev/ttyUSB0
+    sudo kill -9 5051
+    
+do this to kill the proccess if upload is not happening.
+micro ros agent can not be running while uploading.
