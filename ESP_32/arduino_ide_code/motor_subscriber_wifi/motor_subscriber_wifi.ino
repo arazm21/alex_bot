@@ -1,3 +1,5 @@
+#include <DRV8871.h>
+
 #include <micro_ros_arduino.h>
 #include <WiFi.h>
 #include <rcl/rcl.h>
@@ -21,12 +23,12 @@ rcl_node_t node;
 
 
 #define LED_PIN 13
-#define MOTOR_IN0  19
-#define MOTOR_IN1  18
+#define MOTOR_IN0  14
+#define MOTOR_IN1  12
 #define PWM_CHANNEL0  0
 #define PWM_CHANNEL1  1
 
-DRV8871 motor(MOTOR_IN0, MOTOR_IN1, 5000, 10);
+DRV8871 motor(MOTOR_IN0, MOTOR_IN1,  PWM_CHANNEL0, PWM_CHANNEL1);
 
 #define RCCHECK(fn) { rcl_ret_t temp_rc = fn; if((temp_rc != RCL_RET_OK)){ \
   Serial.println(rcl_get_error_string().str); \
@@ -56,13 +58,12 @@ void subscription_callback(const void *msgin) {
   Serial.print(direction);
   Serial.print(" Speed: ");
   Serial.println(speed);
-
+  if (direction ==-1) direction = 0;
   if (direction == 1) {
     digitalWrite(LED_PIN, HIGH);
-  } else if (direction == -1) {
+  } else if (direction == 0) {
     digitalWrite(LED_PIN, LOW);
   }
-  if (direction==-1)direction=0;
   motor.setMotor(direction, speed);
 }
 

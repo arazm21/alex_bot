@@ -25,11 +25,14 @@ for arduino launch go to downloads
 `./arduino-ide_nightly-20250311_Linux_64bit.AppImage --no-sandbox`
 
 -----
-`ros2 run micro_ros_agent micro_ros_agent udp4 --port 8888`
-run this before running esp.
+`ros2 run micro_ros_agent micro_ros_agent udp4 --port 8888`  --  on one terminal
+`ros2 run alex_bot motor_command_publisher.py` -- on another terminal
+`ros2 launch alex_bot ydlidar_launch_view.py` -- not in reccomended when double tabbing
+
+run this before running plugging esp32.
 
     lsof | grep /dev/ttyUSB0
     sudo kill -9 5051
-    
+
 do this to kill the proccess if upload is not happening.
 micro ros agent can not be running while uploading.
